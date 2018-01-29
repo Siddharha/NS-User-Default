@@ -34,13 +34,38 @@ class ViewController: UIViewController ,UIPickerViewDataSource,UIPickerViewDeleg
         return types[row]
     }
     
-    
+   
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent  component: Int) {
+        let yearValueSelected = types[row] as String
+        print(yearValueSelected)
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
 
     @IBAction func btnLogin(_ sender: Any) {
+        
+        if((tfUser.text == "sid")&&(tfPassword.text == "12345678")){
+        UserDefaults.standard.set(tfUser.text, forKey: "user")
+        UserDefaults.standard.set(tfPassword.text, forKey: "password")
+        UserDefaults.standard.set(types[pvType.selectedRow(inComponent: 0)], forKey: "type")
+            showMessage(s: "Sucessfully Loged in")
+        }else{
+            showMessage(s: "Login failed!!")
+        }
+    }
+    
+    private func showMessage(s:String){
+        let alertController = UIAlertController(title: "Message", message: s, preferredStyle: .alert)
+        // Create the actions
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            exit(0)
+        }
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
 }

@@ -112,6 +112,7 @@
                         <viewLayoutGuide key="safeArea" id="1QP-Db-kEz"/>
                     </view>
                     <connections>
+                        <outlet property="lblWelcome" destination="jJE-0d-Tuj" id="dGg-TI-tpa"/>
                         <segue destination="BYZ-38-t0r" kind="showDetail" identifier="segueSplash" action="showViewController:sender:" id="016-hv-bHj"/>
                     </connections>
                 </viewController>

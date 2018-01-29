@@ -10,6 +10,7 @@ import UIKit
 
 class SplashViewController: UIViewController {
 
+    @IBOutlet weak var lblWelcome: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,7 +18,9 @@ class SplashViewController: UIViewController {
         
         //perform(Selector(("gotoLogin")), withObject: nil, afterDelay: 3)
        // performSelector(onMainThread: "gotoLogin", with: nil, waitUntilDone: true)
-        perform(#selector(gotoLogin), with: nil, afterDelay: 1)
+        let s = UserDefaults.standard.string(forKey: "type")
+        lblWelcome.text = "Welcome " + s!
+        perform(#selector(gotoLogin), with: nil, afterDelay: 5)
     }
 
     override func didReceiveMemoryWarning() {
